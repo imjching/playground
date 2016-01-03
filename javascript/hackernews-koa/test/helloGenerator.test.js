@@ -10,3 +10,12 @@ describe('Hello Generator', function() {
     expect(ans).to.equal('hello generator');
   });
 });
+
+// normal way without yield
+// describe('Hello Generator', function() {
+//   it('should yield to the function and return hello', function *() {
+//     helloGenerator(function (ans) {
+//       expect(ans).to.equal('hello generator');
+//     });
+//   });
+// });
