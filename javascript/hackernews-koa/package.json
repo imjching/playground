@@ -1,0 +1,20 @@
+{
+  "name": "hackernews-koa",
+  "version": "1.0.0",
+  "description": "HackerNews Clone using Koa.js",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "^1.1.2"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "co-mocha": "^1.1.2",
+    "mocha": "^2.3.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jay",
+  "license": "ISC"
+}
