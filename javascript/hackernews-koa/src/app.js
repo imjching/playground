@@ -9,7 +9,7 @@ var serve = require('koa-static'); // for static files serving
 var mount = require('koa-mount'); // namespacing all your static files
 
 // connect to mongo db
-require('./db');
+require('./db')(app.env === 'development');
 
 app.use(mount('/public', serve(__dirname + '/public')));
 
