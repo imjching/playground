@@ -4,9 +4,13 @@ var escape = require('escape-html');
 
 var app = module.exports = koa();
 
+
+
+// Create a middleware that escapes all the HTML entities in the response.
 app.use(function* (next) {
   yield next;
   // add some logic here!
+  this.body = escape(this.body);
 })
 
 app.use(function* body() {
