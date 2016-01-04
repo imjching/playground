@@ -7,7 +7,11 @@ var validator = require('validator');
 module.exports = function(router) {
   router.get('/links', function* (next) {
     var links = yield Link.find({}).sort({ upvotes: 'desc' }).exec();
-    this.body = links;
+    if (this.accepts('text/html')) {
+      yield this.render('index', { links: links });
+    } else {
+      this.body = links;
+    }
   });
 
   router.post('/links', function* (next) {
