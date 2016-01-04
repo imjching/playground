@@ -1,4 +1,24 @@
 
+// While co supports promises, we could return thunks from functions, which
+// are exactly like the traditional node-style callbacks with signatures of (err, res)
+//
+// For example take fs.readFile, we all know the signature is:
+// fs.readFile(path, encoding, function(err, result){
+//
+// });
+// To work with Co we need a function to return another function of the same signature:
+// fs.readFile(path, encoding)(function(err, result){
+//
+// });
+// Which basically looks like this:
+//
+// function read(path, encoding) {
+//  return function(cb){
+//    fs.readFile(path, encoding, cb);
+//  }
+// }
+// read: https://www.npmjs.com/package/thunkify
+
 var fs = require('fs');
 
 /**
@@ -12,7 +32,9 @@ var fs = require('fs');
  */
 
 exports.stat = function (filename) {
-
+  return function (cb) {
+    fs.stat(filename, cb);
+  };
 };
 
 /**
@@ -32,5 +54,13 @@ exports.stat = function (filename) {
  */
 
 exports.exists = function (filename) {
-
+  return function (cb) {
+    fs.stat(filename, function (err, stats) {
+      if (err) { // contains error, file do not exist (false)
+        cb(false, false);
+      } else { // no error (null), file exists (true)
+        cb(null, true);
+      }
+    });
+  };
 };
