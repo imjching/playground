@@ -9,6 +9,7 @@
     "koa-body-parser": "^1.1.2",
     "koa-router": "^5.3.0",
     "mongoose": "^4.3.4",
+    "thunkify": "^2.1.2",
     "validator": "^4.4.0"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var thunkify = require('thunkify');
 
 // defining a schema
 var schema = new mongoose.Schema({
@@ -18,4 +19,11 @@ schema.statics.upvote = function* (linkId) {
   return yield this.findByIdAndUpdate(linkId, { $inc: { upvotes: 1 } }).exec();
 };
 
-module.exports = mongoose.model('Link', schema);
+var Link = mongoose.model('Link', schema);
+
+// we are thunkifying the save method so that it can be used by yield
+// in other words, turning the method that accepts a callback into a yieldable thunk
+// turning the traditional callback method into a thunk
+Link.prototype.saveThunk = thunkify(Link.prototype.save);
+
+module.exports = Link;
