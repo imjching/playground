@@ -8,12 +8,14 @@ var app = module.exports = koa();
  * Create the `GET /stream` route that streams this file.
  * In node.js, the current file is available as a variable `__filename`.
  */
+// Create an app that returns a stream when the client requests /stream and
+// a JSON body when the client requests /json.
 
 app.use(function* (next) {
   if (this.request.path !== '/stream') return yield* next;
 
-  // this.response.type =
-  // this.response.body =
+  this.type = 'application/javascript';
+  this.body = fs.createReadStream(__filename);
 });
 
 /**
@@ -23,5 +25,5 @@ app.use(function* (next) {
 app.use(function* (next) {
   if (this.request.path !== '/json') return yield* next;
 
-  // this.response.body =
+  this.body = { message : 'hello world' };
 });
