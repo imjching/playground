@@ -13,12 +13,14 @@ var form = fs.readFileSync(path.join(__dirname, 'form.html'), 'utf8');
 // adds .csrf among other properties to `this`.
 csrf(app);
 
-// use koa-session somewhere at the top of the app
-app.use(session());
-
 // we need to set the `.keys` for signed cookies and the cookie-session module
 app.keys = ['secret1', 'secret2', 'secret3'];
 
+// use koa-session somewhere at the top of the app
+app.use(session(app));
+
+// If the user logs in, they should see hello world.
+// Otherwise, they should see a 401 error because they aren't logged in.
 app.use(function* home(next) {
   if (this.request.path !== '/') return yield next;
 
@@ -31,10 +33,33 @@ app.use(function* home(next) {
  * If successful, the logged in user should be redirected to `/`.
  */
 
+/// login - if the method is GET, a form should be returned.
+// If the method is POST, it should validate the request body and
+// attempt to login the user.
 app.use(function* login(next) {
   if (this.request.path !== '/login') return yield* next;
   if (this.request.method === 'GET') return this.response.body = form.replace('{{csrf}}', this.csrf);
+  if (this.request.method !== 'POST') return yield* next; // nothing else
 
+  // request should be POST
+  var body = yield parse(this.request);
+
+  // test for csrf
+  try {
+    this.assertCSRF(body);
+  } catch (err) {
+    this.status = 403;
+    this.body = { message: 'This CSRF token is invalid!' };
+    return;
+  }
+
+  if (body.username === 'username' && body.password === 'password') {
+    this.session.authenticated = true;
+    this.response.status = 303;
+    this.response.redirect('/');
+  } else {
+    this.response.status = 400; // bad request
+  }
 })
 
 /**
@@ -43,9 +68,13 @@ app.use(function* login(next) {
  * let's not consider that an error and rather a "success".
  */
 
+// logout - it should logout the user.
 app.use(function* logout(next) {
   if (this.request.path !== '/logout') return yield* next;
 
+  this.session.authenticated = false; // logout
+  this.response.status = 303;
+  this.response.redirect('/login');
 })
 
 /**
