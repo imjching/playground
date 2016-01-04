@@ -16,7 +16,7 @@ var schema = new mongoose.Schema({
 schema.statics.upvote = function* (linkId) {
   // turning mongo queries into Promises by calling exec();
   // yielding Promises, thunks, generator functions
-  return yield this.findByIdAndUpdate(linkId, { $inc: { upvotes: 1 } }).exec();
+  return yield this.findByIdAndUpdate(linkId, { $inc: { upvotes: 1 } }, { new: 1 }).exec();
 };
 
 var Link = mongoose.model('Link', schema);
