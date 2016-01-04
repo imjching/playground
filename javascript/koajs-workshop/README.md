@@ -1,5 +1,7 @@
 # koa
 
+*REFERENCE:* https://github.com/koajs/workshop
+
 In this workshop, you will learn the basics of [koa](https://github.com/koajs/koa),
 [Express'](https://github.com/visionmedia/express) spiritual successor.
 This workshop was created for the [2014 LXJS conference in Lisbon, Portugal](https://github.com/lxjs/training-koa),
