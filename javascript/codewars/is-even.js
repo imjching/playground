@@ -11,5 +11,5 @@ function getEvenNumbers(numbersArray){
   // or, with bitwise operators
   // number is even if the last bit is 0
   // e & 1 returns 1 if number is odd
-  return numbersArray.filter(e => !(e & 1));
+  // return numbersArray.filter(e => !(e & 1));
 }
