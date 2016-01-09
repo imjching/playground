@@ -13,6 +13,11 @@ function() {
 
   // You should return an array containing only the URL of the largest box art. Remember that reduce always
   // returns an array with one item.
-  return boxarts.
-    reduce   // Complete this expression
+  return boxarts.reduce(function(old, new_) {
+    var old_size = old.width * old.height;
+    var new_size = new_.width * new_.height;
+    return (old_size > new_size) ? old : new_;
+  }).map(function(e) {
+    return e.url;
+  });
 }

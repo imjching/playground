@@ -8,8 +8,13 @@ function() {
 
   // You should return an array containing only the largest rating. Remember that reduce always
   // returns an array with one item.
-  return ratings.
-    reduce   // Complete this expression
+  return ratings.reduce(function(old, new_) {
+    if (old > new_) {
+      return old;
+    } else {
+      return new_;
+    }
+  });
 }
 
 // Nice work. Now let's try combining reduce() with our other functions to
