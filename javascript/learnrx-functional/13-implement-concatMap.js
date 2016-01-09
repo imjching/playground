@@ -18,6 +18,7 @@ Array.prototype.concatMap = function(projectionFunctionThatReturnsArray) {
       // function will return an new child array. This will create a
       // two-dimensional array.
       // ------------   INSERT CODE HERE!  ----------------------------
+      return projectionFunctionThatReturnsArray(item);
     }).
     // apply the concatAll function to flatten the two-dimensional array
     concatAll();
