@@ -5,7 +5,7 @@ function(console) {
       counter;
 
   for (counter = 0; counter < names.length; counter++) {
-    // code
+    console.log(names[counter]);
   }
 }
 

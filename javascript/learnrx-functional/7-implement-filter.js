@@ -14,6 +14,9 @@ Array.prototype.filter = function(predicateFunction) {
     // Note: remember you can add items to the array using the array's
     // push() method.
     // ------------ INSERT CODE HERE! ----------------------------
+    if (predicateFunction(itemInArray)) {
+      results.push(itemInArray);
+    }
   });
 
   return results;

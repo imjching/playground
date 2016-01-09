@@ -47,6 +47,11 @@ function() {
   // ------------ INSERT CODE HERE! -----------------------------------
   // Use forEach function to accumulate every video with a rating of 5.0
   // ------------ INSERT CODE HERE! -----------------------------------
+  newReleases.forEach(function(release) {
+    if (release.rating === 5.0) {
+      videos.push(release);
+    }
+  });
 
   return videos;
 }

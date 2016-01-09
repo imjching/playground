@@ -13,6 +13,7 @@ Array.prototype.map = function(projectionFunction) {
     // each result to the results array.
     // Note: you can add items to an array with the push() method.
     // ------------ INSERT CODE HERE! ----------------------------
+    results.push(projectionFunction(itemInArray));
 
   });
 

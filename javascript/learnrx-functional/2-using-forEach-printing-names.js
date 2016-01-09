@@ -5,7 +5,9 @@
 function(console) {
   var names = ["Ben", "Jafar", "Matt", "Priya", "Brian"];
 
-  // code here
+  names.forEach(function(name) {
+    console.log(name);
+  });
 }
 
 // Notice that forEach lets us specify what we want to happen to each item in

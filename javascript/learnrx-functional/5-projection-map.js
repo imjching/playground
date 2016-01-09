@@ -42,8 +42,9 @@ function() {
 
   // ------------ INSERT CODE HERE! -----------------------------------
   // Use map function to accumulate {id, title} pairs from each video.
-  return newReleases.map // finish this expression!
-  // ------------ INSERT CODE HERE! -----------------------------------
+  return newReleases.map(function(release) {
+    return { id: release.id, title: release.title };
+  });
 
 }
 

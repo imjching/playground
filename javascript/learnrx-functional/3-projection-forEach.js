@@ -46,7 +46,9 @@ function() {
   // Put the results into the videoAndTitlePairs array using the Array's
   // push() method. Example: videoAndTitlePairs.push(newItem);
   // ------------ INSERT CODE HERE! -----------------------------------
-
+  newReleases.forEach(function(release) {
+    videoAndTitlePairs.push({ "id": release.id, "title": release.title });
+  });
 
   return videoAndTitlePairs;
 }
