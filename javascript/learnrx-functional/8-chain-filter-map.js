@@ -41,8 +41,11 @@ function() {
   // Chain the filter and map functions to select the id of all videos
   // with a rating of 5.0.
 
-  return newReleases // Complete this expression
-  // ------------ INSERT CODE HERE! -----------------------------------
+  return newReleases.filter(function(release) {
+    return release.rating === 5.0;
+  }).map(function(filtered) {
+    return filtered.id;
+  });
 }
 
 
