@@ -57,6 +57,7 @@ function() {
 
       // ----- INSERT CODE TO ADD THE VIDEO TITLE TO THE ----
       // ----- NEW MAP USING THE VIDEO ID AS THE KEY   ----
+      copyOfAccumulatedMap[video.id] = video.title;
 
       return copyOfAccumulatedMap;
     },

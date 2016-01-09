@@ -15,6 +15,7 @@ Array.zip = function(left, right, combinerFunction) {
 
   for(counter = 0; counter < Math.min(left.length, right.length); counter++) {
     // Add code here to apply the combinerFunction to the left and right-hand items in the respective arrays
+    results.push(combinerFunction(left[counter], right[counter]));
   }
 
   return results;

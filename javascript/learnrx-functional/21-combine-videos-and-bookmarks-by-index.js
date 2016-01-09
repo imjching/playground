@@ -45,6 +45,7 @@ function() {
 
   for(var counter = 0; counter < Math.min(videos.length, bookmarks.length); counter++) {
     // Insert code here to create a {videoId, bookmarkId} pair and add it to the videoIdAndBookmarkIdPairs array.
+    videoIdAndBookmarkIdPairs.push({ videoId: videos[counter].id, bookmarkId: bookmarks[counter].id });
   }
 
   return videoIdAndBookmarkIdPairs;

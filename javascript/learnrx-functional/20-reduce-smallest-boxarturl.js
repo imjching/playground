@@ -73,9 +73,14 @@ function() {
   //   {"id": 70111470,"title": "Die Hard","boxart":"http://cdn-0.nflximg.com/images/2891/DieHard150.jpg" }
   // ];
 
-  return movieLists.
-    concatMap(function(movieList) {
-
-    })
+  return movieLists.concatMap(function(movieList) {
+    return movieList.videos.concatMap(function(video) {
+      return video.boxarts.reduce(function(prev, next) {
+        return prev.width * prev.height > next.width * next.height ? next : prev;
+      }).map(function(e) {
+        return { id: video.id, title: video.title, boxart: e.url };
+      });
+    });
+  });
 
 }

@@ -40,6 +40,7 @@ function() {
       {id: 445, time: 987834}
     ];
 
-  return Array.
-    zip( //... finish this expression
+  return Array.zip(videos, bookmarks, function(left, right) {
+    return { videoId: left.id, bookmarkId: right.id };
+  });
 }
