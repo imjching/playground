@@ -55,6 +55,9 @@ function() {
   // Use map and concatAll to flatten the movieLists in a list of video ids.
   // ------------   INSERT CODE HERE!  -----------------------------------
 
-  return movieLists // Complete this expression!
-
+  return movieLists.map(function(movie) {
+    return movie.videos.map(function(video) {
+      return video.id;
+    });
+  }).concatAll();
 }

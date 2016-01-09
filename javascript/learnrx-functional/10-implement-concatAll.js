@@ -11,6 +11,9 @@ Array.prototype.concatAll = function() {
     // ------------ INSERT CODE HERE! ----------------------------
     // Add all the items in each subArray to the results array.
     // ------------ INSERT CODE HERE! ----------------------------
+    subArray.forEach(function(e) {
+      results.push(e);
+    });
   });
 
   return results;

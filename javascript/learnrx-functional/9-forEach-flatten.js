@@ -60,6 +60,11 @@ function() {
   // Use two nested forEach loops to flatten the movieLists into a list of
   // video ids.
   // ------------   INSERT CODE HERE!  -----------------------------------
+  movieLists.forEach(function(movie) {
+    movie.videos.forEach(function(video) {
+      allVideoIdsInMovieLists.push(video.id);
+    });
+  });
 
   return allVideoIdsInMovieLists;
 
