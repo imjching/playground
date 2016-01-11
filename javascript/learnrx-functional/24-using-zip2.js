@@ -86,9 +86,18 @@ function() {
     ];
 
   //------------ COMPLETE THIS EXPRESSION --------------
-  return movieLists.
-    concatMap(function(movieList) {
+  return movieLists.concatMap(function(movieList) {
+    return movieList.videos.concatMap(function(video) {
+      var i = video.boxarts.reduce(function(prev, next) {
+        return prev.width * prev.height > next.width * next.height ? next : prev;
+      });
+      var j = video.interestingMoments.filter(function(e) {
+        return e.type === "Middle";
+      });
+      return Array.zip(i, j, function(left, right) {
+        return { id: video.id, title: video.title, time: right.time, url: left.url };
+      });
 
     });
-
+  });
 }
