@@ -39,3 +39,22 @@ function Stack () {
     console.log(items.toString());
   }
 }
+
+// Testing
+var stack = new Stack();
+console.log(stack.isEmpty()); // should return true
+
+stack.push(16);
+stack.push(87);
+
+console.log(stack.peek()); // should show 87
+
+stack.push(10);
+console.log(stack.size()); // 3
+console.log(stack.isEmpty()); // false
+
+stack.push(76);
+stack.pop();
+stack.pop();
+console.log(stack.size()); // 2
+stack.print(); // should be [16, 87]
