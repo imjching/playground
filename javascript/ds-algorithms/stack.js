@@ -60,6 +60,7 @@ console.log(stack.size()); // 2
 stack.print(); // should be [16, 87]
 
 // Applications of stack data structure
+// ====================================
 
 // Converting decimal to binary using the remainder method
 // Recursively dividing the decimal number by 2
@@ -82,6 +83,29 @@ function decToBin (number) {
 
 console.log(decToBin(10)); //1010
 console.log(decToBin(16)); //10000
+
+// Converting decimal to any base using the remainder method
+
+function convertDec (number, base) {
+  var remainder = new Stack();
+  var possibleValues = '0123456789ABCDEF';
+
+  while (number > 0) {
+    remainder.push(number % base);
+    number = ~~(number / base); // round down
+  }
+
+  var bin = ''; // initialize a string
+  while (!remainder.isEmpty()) {
+    bin += possibleValues[remainder.pop()];
+  }
+
+  return bin;
+}
+
+console.log(convertDec(10, 16)); //0xA
+console.log(convertDec(167, 16)); //0xA7
+console.log(convertDec(16, 16)); //0x10
 
 
 
