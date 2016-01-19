@@ -107,5 +107,37 @@ console.log(convertDec(10, 16)); //0xA
 console.log(convertDec(167, 16)); //0xA7
 console.log(convertDec(16, 16)); //0x10
 
+// Balanced parenthesis. Checks if a string with parenthesis is balanced
+
+function isPairParent (p1, p2) { // checks if p1 and p2 are pairs
+  var obj = { '[' : ']', '{' : '}', '(' : ')', '<' : '>' };
+  return obj[p1] && obj[p1] == p2;
+}
+
+function balParent (input) {
+  var stack = new Stack();
+
+  for (var i = 0; i < input.length; i++) {
+    var p = input[i]; // getting the character
+
+    if (~['[', '{', '(', '<'].indexOf(p)) { // if p is either one
+      stack.push(p);
+    } else if (isPairParent(stack.peek(), p)) { // if pairs
+      stack.pop();
+    } else if (![']', '}', ')', '>'].indexOf(p)) { // do not need to loop further if character is a closing parenthesis
+      return false; // not balanced at all
+      // ignore if contains other characters
+    }
+  }
+
+  // all passed provided stack is empty
+  return stack.isEmpty();
+}
+
+var tests = ['()[]<>{}', '(<', ']}', '()<', '(][)', '{(X)[XY]}', '((()))', '(()', '[{aaa<bb>dd}]<232>', '[ff{<gg}]<ttt>', '{<}>'];
+            // true, false, false, false, false, true, true, false, true, false, false
+tests.forEach(function (e) {
+  console.log(balParent(e));
+});
 
 
