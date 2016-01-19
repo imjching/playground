@@ -124,7 +124,7 @@ function balParent (input) {
       stack.push(p);
     } else if (isPairParent(stack.peek(), p)) { // if pairs
       stack.pop();
-    } else if (![']', '}', ')', '>'].indexOf(p)) { // do not need to loop further if character is a closing parenthesis
+    } else if (~[']', '}', ')', '>'].indexOf(p)) { // do not need to loop further if character is a closing parenthesis
       return false; // not balanced at all
       // ignore if contains other characters
     }
