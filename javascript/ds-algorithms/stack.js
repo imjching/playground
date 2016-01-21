@@ -1,4 +1,9 @@
-function Stack () {
+// Stacks are linear lists
+// LIFO concept (Last In First Out)
+// Usually implemented using arrays or linked list
+// Both running time is O(n)
+
+function Stack () { // using arrays
 
   // array to store all the stack's elements
   var items = [];
