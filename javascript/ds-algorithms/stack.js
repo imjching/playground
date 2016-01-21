@@ -140,4 +140,25 @@ tests.forEach(function (e) {
   console.log(balParent(e));
 });
 
+// Reversing a string
+
+function reverseString (value) {
+  var reversed = new Stack();
+
+  // push the characters in
+  for (var i = 0; i < value.length; i++) {
+    reversed.push(value[i]);
+  }
+
+  // pop back out
+  var newString = '';
+  while (!reversed.isEmpty()) {
+    newString += reversed.pop();
+  }
+
+  return newString;
+}
+
+console.log(reverseString('Hello World')); // "dlroW olleH"
+console.log(reverseString('ThisIsAString')); // tringSAsIsihT
 
