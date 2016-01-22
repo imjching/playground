@@ -167,3 +167,7 @@ function reverseString (value) {
 console.log(reverseString('Hello World')); // "dlroW olleH"
 console.log(reverseString('ThisIsAString')); // tringSAsIsihT
 
+// Reversing a String (shorter?)
+// we are still using a stack (which is based on an array)
+// reversed = value.split('').reverse().join('')
+
