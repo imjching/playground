@@ -1,3 +1,7 @@
+# Making a two player game?
+# Creating battleships of different sizes? (Ensure that it doesn't go beyond boundaries)
+# Statistics?
+
 from random import randint
 
 # Generate board
