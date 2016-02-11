@@ -13,3 +13,9 @@
 const Route = use('Route')
 
 Route.get('/', 'HomeController.index')
+
+Route.get('/make/:drink', function* (request, response) {
+  const drink = request.param('drink');
+
+  response.send(`I will make ${drink} for you!`)
+});
