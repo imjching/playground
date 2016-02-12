@@ -7,7 +7,7 @@ storage/*
 # Keeping storage directory
 !storage/.gitkeep
 
-# Environment files should be seperate for each environment
+# Environment files should be separate for each environment
 .env
 
 # When npm runs error it write logs to the below file
