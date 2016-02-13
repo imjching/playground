@@ -7,17 +7,24 @@ them the year that they will turn 100 years old.
 
 Extras:
 
-Add on to the previous program by asking the user for another number and printing out that many copies of the previous message. (Hint: order of operations exists in Python)
-Print out that many copies of the previous message on separate lines. (Hint: the string "\n is the same as pressing the ENTER button)
+Add on to the previous program by asking the user for
+another number and printing out that many copies of the
+previous message. (Hint: order of operations exists in Python)
+
+Print out that many copies of the previous message on
+separate lines.
+(Hint: the string "\n is the same as pressing the ENTER button)
 """
 
 from datetime import date
 
 name = raw_input("Please enter your name: ")
 age = int(raw_input("Please enter your age: "))
+times = int(raw_input("Please enter a favorite number: "))
 
 years_remaining = 100 - age
 
 year = date.today().year + years_remaining
 
-print "Hello %s! You will turn 100 years old by the end of %s." % (name, year)
+for i in range(times):
+  print "Hello %s! You will turn 100 years old by the end of %s." % (name, year)
