@@ -8,13 +8,16 @@ divided by 2?
 
 Extras:
 
-If the number is a multiple of 4, print out a different message.
-Ask the user for two numbers: one number to check (call it num) and one number to divide by (check). If check divides evenly into num, tell that to the user. If not, print a different appropriate message
+Ask the user for two numbers: one number to check
+(call it num) and one number to divide by (check).
+If check divides evenly into num, tell that to the user.
+If not, print a different appropriate message
 """
 
-number = int(raw_input("Please enter a number: "))
+num = int(raw_input("Please enter a number: "))
+check = int(raw_input("Please enter a number to divide: "))
 
-if number % 2 == 0: # Even
-  print "This is an even number!"
+if num % check == 0:
+  print "This number divides appropriately by " + str(check)
 else:
-  print "This is an odd number!"
+  print "Oh no!"
