@@ -20,11 +20,26 @@ from random import randint
 
 random_number = randint(1, 9)
 print random_number #cheat
-comparable = int(raw_input("Guess a number: ")) - random_number
 
-if comparable == 0:
-  print "Exactly right!"
-elif comparable > 0:
-  print "Too high!"
-else:
-  print "Too low!"
+trials = 0
+
+while True:
+  trials += 1
+  number = raw_input("Guess a number: ")
+  try:
+    comparable = int(number) - random_number
+
+    if comparable == 0:
+      print "Exactly right!"
+      print "You have used %s trials!" % trials
+      break
+    elif comparable > 0:
+      print "Too high!"
+    else:
+      print "Too low!"
+  except ValueError:
+    if number == "exit":
+      print "You have used %s trials!" % trials
+      break
+    else:
+      print "Please enter a valid number (or exit)"
