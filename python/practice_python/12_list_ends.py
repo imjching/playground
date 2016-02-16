@@ -11,10 +11,8 @@ a = [5, 10, 15, 20, 25]
 
 def make_new_list(old_list):
   if len(old_list) < 3:
-    return old_list #same
-  b = []
-  b.append(old_list[0])
-  b.append(old_list[-1])
-  return b
+    return old_list
+  else:
+    return [old_list[0], old_list[-1]]
 
 print make_new_list(a)
