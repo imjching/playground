@@ -24,7 +24,9 @@ NOTE: Once the chain starts the terms are allowed to go
 above one million.
 """
 
-# Takes about 33 seconds without caching
+# Using `time python longest_collatz_sequence.py`
+# Takes about 33 seconds without caching, 2 seconds with caching
+# 837799 is the initial number, with 525 terms in the chain
 
 # Variable
 maximum_number = 1000000
@@ -32,20 +34,25 @@ maximum_number = 1000000
 initial_number = 1
 sequence_length = 1
 
+cache = [-1] * (maximum_number + 1)
+cache[1] = 1
+
 for i in range(2, maximum_number + 1):
   next_term = i
   count = 0
 
-  while next_term != 1:
+  while next_term != 1 and next_term >= i:
     count += 1
     if next_term % 2 == 0:
       next_term /= 2
     else:
       next_term = next_term * 3 + 1
 
-  if count > sequence_length:
-    sequence_length = count
+  cache[i] = count + cache[next_term]
+
+  if cache[i] > sequence_length:
+    sequence_length = cache[i]
     initial_number = i
 
 print initial_number
-print count
+print sequence_length
