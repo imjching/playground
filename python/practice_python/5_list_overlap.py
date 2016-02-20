@@ -29,9 +29,17 @@ for i in range(randint(1, 30)):
 print a
 print b
 
+## Method 1
 new_list = []
 for i in a:
   if i in b and i not in new_list:
     new_list.append(i)
 
-print new_list
+print sorted(new_list)
+
+## Method 2
+from sets import Set
+a = Set(a)
+b = Set(b)
+
+print list(a & b)
