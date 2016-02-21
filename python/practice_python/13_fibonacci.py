@@ -23,3 +23,20 @@ result = ""
 for i in range(count):
   result += str(get_fibonacci_number(i + 1)) + ", "
 print result[:len(result) - 2]
+
+# alternative, using memoization, faster by a huge margin
+numbers_cache = {}
+def get_fibonacci_number_memoized(n):
+  if n in numbers_cache:
+    return numbers_cache[n]
+  else:
+    if n < 2:
+      numbers_cache[n] = n
+    else:
+      numbers_cache[n] = get_fibonacci_number_memoized(n - 2) + get_fibonacci_number_memoized(n - 1)
+    return numbers_cache[n]
+
+result = ""
+for i in range(count):
+  result += str(get_fibonacci_number_memoized(i + 1)) + ", "
+print result[:len(result) - 2]
