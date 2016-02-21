@@ -11,3 +11,8 @@ Then I would see the string:
 Michele is name My
 shown back to me.
 """
+
+def reverse_word_string(input_):
+  return " ".join(input_.split(" ")[::-1])
+
+print reverse_word_string("My name is Michele")
