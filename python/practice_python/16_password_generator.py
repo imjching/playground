@@ -12,6 +12,10 @@ Ask the user how strong they want their password to be. For weak passwords,
 pick a word or two from a list.
 """
 
+# The one below allows the password to have at least 1 uppercase, 1 lowercase, 1 number, and 1 symbol
+# Alternative:
+# "".join(random.sample(string, length))
+
 from random import randint
 
 def check_password(password):
