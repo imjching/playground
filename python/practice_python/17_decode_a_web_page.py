@@ -13,9 +13,13 @@ contents = webpage.text
 soup = BeautifulSoup(contents, "html.parser")
 
 all_h2s = soup.find_all("h2", { "class": "story-heading" })
-all_titles = map(lambda x: x.find("a"), all_h2s)
-all_titles = [i for i in all_titles if i is not None]
-all_titles = map(lambda x: x.text, all_titles)
+all_titles = []
+
+for i in all_h2s:
+  if i.a:
+    all_titles.append(i.a.text)
+  else:
+    all_titles.append(i.text)
 
 for i in all_titles:
   print i.strip()
