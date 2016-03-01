@@ -14,3 +14,5 @@ through the solution of the exercise posted here.)
 This will just print the full text of the article to the screen. It will not make it easy to
 read, so next exercise we will learn how to write this text to a .txt file.
 """
+
+# Removed. Article is broken.
