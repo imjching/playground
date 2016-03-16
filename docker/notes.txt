@@ -1,0 +1,32 @@
+Create a data-only container (run once only):
+docker run -v /data --name data_container cogniteev/echo
+
+Create a container that adds data into /data (run once only, and removes it):
+docker run -it --volumes-from data_container --rm busybox
+echo "hello" > /data/hello_world.txt
+
+Create a container that shows that is in the data_container
+docker run --volumes-from data_container --rm busybox cat /data/hello_world.txt
+
+docker-start() {
+  docker-machine start ${1:-dev}
+  eval "$(docker-machine env ${1:-dev})"
+  export DOCKER_IP=$(docker-machine ip ${1:-dev})
+  echo The machine ip is DOCKER_IP=$DOCKER_IP
+}
+
+docker-kill() {
+  docker-compose kill
+  docker stop $(docker ps -a -q)
+}
+
+docker-clean() {
+  docker-compose rm -f
+  docker rm -v $(docker ps -a -q -f status=exited)
+  docker rmi $(docker images -f "dangling=true" -q)
+}
+
+docker build --rm -f <Dockerfile> -t <Tag> .
+docker exec -it <container> <command>
+docker run --rm <image> <command>
+docker-compose run --service-ports <service>
